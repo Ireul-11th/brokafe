@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Broskafe - Bản sao</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        header p,
+        header h1 {
+            position: relative;
+            z-index: 2;
+        }
+
+        header p {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        nav {
+            background-color: #FFFFFF;
+            height: 50px;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+	    vertical-align: text-bottom;
+        }
+
+        nav a {
+            color: black;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #f39c12;
+        }
+
+        .section {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .product {
+            border: 1px solid #ddd;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+        }
+
+        .product h3 {
+            margin-bottom: 10px;
+            color: #34495e;
+        }
+
+        footer {
+            background-color: #34495e;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#"><span style="color:gold">TRANG CHỦ</span></a>
+        <a href="#">QUICK MENU</a>
+        <a href="#">TESTIMONIALS</a>
+        <a href="#">BLOG</a>
+	<a href="#">FACEBOOK PAGE</a>
+    </nav>
+
+    <header style="background-image: url('https://scontent.fdad1-3.fna.fbcdn.net/v/t1.6435-9/67280841_2144242635684100_6295819867161362432_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=0b6b33&_nc_ohc=sZZTmzwUpzAQ7kNvgFOrzXO&_nc_oc=Adk5ZpQo7CvDDuTgBj5cNIrRLH7E3KL3ndWKD0bRzKOqGAjb29xIsNBTtgFtxFPfYPc&_nc_zt=23&_nc_ht=scontent.fdad1-3.fna&_nc_gid=pOaD-VI85qzLRo_Gc2crKg&oh=00_AYGRAxncP7ZTxonmJ316Ja6hypL_lz3FUQNQRIhJM82Xyw&oe=680AF69B');">
+        <p>-- Kitchen for Expats --</p>
+        <h1>Bro's Kafe Da Nang</h1>
+    </header>
+
+    <section class="section">
+        <h2>Sản phẩm nổi bật</h2>
+        <div class="product-grid">
+            <div class="product">
+                <img src="product1.jpg" alt="Sản phẩm 1" width="200">
+                <h3>Tên sản phẩm 1</h3>
+                <p>Mô tả sản phẩm 1</p>
+            </div>
+            <div class="product">
+                <img src="product2.jpg" alt="Sản phẩm 2" width="200">
+                <h3>Tên sản phẩm 2</h3>
+                <p>Mô tả sản phẩm 2</p>
+            </div>
+            <div class="product">
+                <img src="product3.jpg" alt="Sản phẩm 3" width="200">
+                <h3>Tên sản phẩm 3</h3>
+                <p>Mô tả sản phẩm 3</p>
+            </div>
+            <div class="product">
+                <img src="product4.jpg" alt="Sản phẩm 4" width="200">
+                <h3>Tên sản phẩm 4</h3>
+                <p>Mô tả sản phẩm 4</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2><span style="color:gold">ABOUT US</span></h2>
+        <p>- Bro's Kafe was founded in June 2018 by 2 Bros sharing the same passion of opening a rendezvous spot for expats in Da Nang City.<br>
+            - Bro's Kafe serves Specialty Coffee 100% from coffee beans with honey-red processed.<br>
+            - Bro's Kafe is also well-known for good sandwiches, baguette, croissant and salad that have good value for quality and casual price.<br>
+            - Bro's Kafe is the first coffeeshop in Da Nang that serve Green Smoothie from spinach and fresh fruits<br>
+            - Bro's Kafe cooperate with Bellany Ice Cream to provide high quality ice-cream with many amazing flavour such as sorbet, salted caramel<br>
+            Bro's Kafe is proving that high value can be made from the simple. That's why Bro's Kafe is ranked one of the Top coffeeshop for expats in Da Nang.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Broskafe - Bản sao</p>
+    </footer>
+
+</body>
+</html>
