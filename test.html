@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Broskafe - Bản sao</title>
+  <!-- Nếu bạn có file CSS riêng, bạn có thể giữ lại liên kết sau và xóa đoạn CSS bên dưới -->
+  <!-- <link rel="stylesheet" href="style.css"> -->
+
+<style>
+.youtube-video {
+  padding: 40px 20px;
+  background-color: #f0f0f0;
+  text-align: center;
+}
+
+.youtube-video h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.video-container {
+  position: relative;
+  width: 100%; /* Đảm bảo video container chiếm 100% chiều rộng */
+  max-width: 480px; /* Đặt chiều rộng tối đa là 480px */
+  height: 0;
+  padding-bottom: 56.25%; /* Tỷ lệ 16:9, tính từ 9/16 = 0.5625 */
+  margin: 0 auto;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+</style><style>
+.delivery-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+}
+
+.delivery-content {
+  flex: 1;
+  max-width: 600px;
+  padding-right: 20px;
+}
+
+.delivery-content h2 {
+  font-size: 2em;
+  color: #2c3e50;
+}
+
+.delivery-tagline {
+  color: #ff9900; /* Màu vàng */
+  font-weight: bold;
+  font-size: 1.5em;
+  margin: 10px 0;
+}
+
+.delivery-image {
+  flex: 1;
+  text-align: center;
+}
+
+.delivery-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+</style>
+<style>
+.footer-section {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 20px;
+  background-color: #242424; /* Màu nền đen xám */
+  color: white;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.calendar {
+  flex: 1;
+  padding: 10px;
+  background-color: #333; /* Màu nền hơi sáng hơn một chút cho calendar */
+  color: white;
+  border-radius: 8px;
+}
+
+.calendar table {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+.calendar th, .calendar td {
+  padding: 10px;
+  border: 1px solid #555; /* Đổi màu viền cho bảng calendar */
+}
+
+.contact-us {
+  flex: 1;
+  padding: 10px;
+  background-color: #333; /* Màu nền hơi sáng hơn một chút cho contact */
+  text-align: center;
+  border-radius: 8px;
+}
+
+.contact-us a img {
+  width: 200px;
+  height: auto;
+  margin-top: 10px;
+}
+
+.bro-kafe {
+  flex: 1;
+  padding: 10px;
+  background-color: #333; /* Màu nền hơi sáng hơn một chút cho Bro's Kafe */
+  color: white;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.bro-kafe h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.bro-kafe p {
+  margin: 5px 0;
+}
+</style>
+<style>
+/* 
+   Vùng tổng quát của section, có hình nền, 
+   bạn thay link background-image bên dưới bằng link hình bạn muốn
+*/
+.review-section {
+  background: url('https://scontent.fdad1-3.fna.fbcdn.net/v/t39.30808-6/482192203_1272263477740722_603344597192752832_n.jpg')
+      no-repeat center center/cover;
+  padding: 50px 20px;       /* Tạo khoảng cách trên dưới */
+  display: flex;
+  justify-content: center;  /* Căn giữa khung trắng theo chiều ngang */
+}
+
+/* Khung trắng bao quanh toàn bộ nội dung review */
+.review-container {
+  max-width: 900px;               /* Giới hạn chiều rộng */
+  width: 100%;
+  background-color: #fff;         /* Màu nền trắng */
+  border-radius: 8px;             /* Bo góc */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2); /* Đổ bóng nhẹ */
+  padding: 30px;
+}
+
+/* Phần đầu (header) của khung review */
+.review-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+/* Thông tin tên quán + "powered by Google" */
+.review-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* Tên quán */
+.cafe-name {
+  font-size: 1.8em;
+  margin: 0;
+  color: #333;
+}
+
+/* Dòng chữ "powered by Google" */
+.powered-by {
+  font-size: 1em;
+  color: #888;
+}
+
+.powered-by span {
+  font-weight: bold;
+  color: #4285F4; /* Màu xanh đặc trưng Google */
+}
+
+/* Logo Google */
+.google-logo {
+  width: 50px;
+  height: auto;
+  margin-left: 20px;
+}
+
+/* Danh sách các review */
+.review-list {
+  margin-top: 20px;
+}
+
+/* Một review cụ thể */
+.review-item {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+/* Dòng trên của review: tên người + rating sao */
+.review-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Tên người review */
+.review-author {
+  font-weight: bold;
+  font-size: 1.1em;
+  color: #333;
+}
+
+/* Rating sao - bạn có thể thay chuỗi "★★★★★" thành icon SVG hoặc hình ảnh */
+.review-rating {
+  color: #ff9900;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+/* Phần nội dung text review */
+.review-text {
+  margin-top: 5px;
+  font-size: 1em;
+  color: #555;
+}
+
+/* Các review bổ sung bị ẩn ban đầu */
+.additional-reviews {
+  display: none; /* Ban đầu ẩn */
+}
+
+/* Nút "More Reviews" */
+.more-reviews-btn {
+  background-color: #ff9900;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.more-reviews-btn:hover {
+  background-color: #e68a00;
+}
+
+/* Nút "Write a Review" */
+.write-review-btn {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.write-review-link {
+  background-color: #4285F4;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.write-review-link:hover {
+  background-color: #357ae8;
+}
+
+</style>
+
+
+<style>
+.youtube-video {
+  padding: 40px 20px;
+  background-color: #f0f0f0;
+  text-align: center;
+}
+
+.youtube-video h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* Tỉ lệ 16:9 */
+  height: 0;
+  overflow: hidden;
+  max-width: 80%; /* Giới hạn chiều rộng của video */
+  margin: 0 auto;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; /* Đảm bảo video chiếm hết chiều rộng của container */
+  height: 100%; /* Tự động điều chỉnh chiều cao */
+}
+
+</style>
+  <style>
+  .image-gallery {
+  padding: 40px 20px;
+  /* Dùng ảnh bạn gửi làm background cho toàn bộ section */
+  background-image: url('https://scontent.fdad2-1.fna.fbcdn.net/v/t1.6435-9/119843214_3101287059979648_984297715383872603_n.jpg?stp=c0.204.1431.1431a_dst-jpg_s206x206_tt6&_nc_cat=101&ccb=1-7&_nc_sid=50ad20&_nc_ohc=51wXUFvoq2gQ7kNvgEUi0nh&_nc_oc=Adl1bwjBma3jm7r_9miU9DCtAuEZiCXDNhIJG7NlBqUO3NUJX-hf0vLLOXD1GT2aq5ZugovjI3P-R_PyEluYHVUY&_nc_zt=23&_nc_ht=scontent.fdad2-1.fna&_nc_gid=IrwWl6EuDtuBPP-J2KxdtQ&oh=00_AYFMfd7T82tCDbNrtfbhRe1q_-UHM4_gkc8R2RQrqVrD0g&oe=68139DB8');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  text-align: center;
+}
+
+.gallery-wrapper {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  display: inline-block; /* Giúp khung không giãn toàn bộ chiều rộng nếu không cần */
+}
+
+.image-gallery h2 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  color: #333;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  font-size: 1.5em;
+  color: #ff9900;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.image-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 cột */
+  gap: 20px;
+}
+
+/* Các hình được đặt đều trong grid với cùng chiều cao */
+.image-container img {
+  width: 100%;
+  height: 200px;         /* Chiều cao cố định để tạo đều nhau */
+  object-fit: cover;     /* Giữ tỉ lệ, cắt bớt phần thừa nếu cần */
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.image-container img:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive: giảm số cột theo kích thước màn hình */
+@media (max-width: 1024px) {
+  .image-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .image-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .image-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+  </style>
+<style>
+.delivery-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+}
+
+.delivery-content {
+  flex: 1;
+  max-width: 600px;
+  padding-right: 20px;
+}
+
+.delivery-content h2 {
+  font-size: 2em;
+  color: #2c3e50;
+}
+
+.delivery-tagline {
+  color: #ff9900;
+  font-weight: bold;
+}
+
+.delivery-image {
+  flex: 1;
+  text-align: center;
+}
+
+.delivery-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+</style>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      padding: 0;
+      line-height: 1.6;
+      color: #333;
+    }
+    
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background-color: #f0f0f0; /* Màu nền header */
+    }
+    
+    header p,
+    header h1 {
+      position: relative;
+      z-index: 2;
+    }
+    
+    header p {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+    
+    header h1 {
+      font-size: 2.5em;
+      margin: 0;
+    }
+    
+    .logo img {
+      height: 50px; /* Điều chỉnh kích thước logo */
+    }
+    
+    nav ul {
+      list-style: none;
+      display: flex;
+    }
+    
+    nav li {
+      margin-left: 20px;
+    }
+    
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+    
+    .hero {
+      background-image: url('https://scontent.fdad1-3.fna.fbcdn.net/v/t1.6435-9/67280841_2144242635684100_6295819867161362432_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=0b6b33&_nc_ohc=sZZTmzwUpzAQ7kNvgFOrzXO&_nc_oc=Adk5ZpQo7CvDDuTgBj5cNIrRLH7E3KL3ndWKD0bRzKOqGAjb29xIsNBTtgFtxFPfYPc&_nc_zt=23&_nc_ht=scontent.fdad1-3.fna&_nc_gid=pOaD-VI85qzLRo_Gc2crKg&oh=00_AYGRAxncP7ZTxonmJ316Ja6hypL_lz3FUQNQRIhJM82Xyw&oe=680AF69B');
+      background-size: cover;
+      background-position: center;
+      height: 500px; /* Điều chỉnh chiều cao hero */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+    }
+    
+    .hero-content {
+      display: flex;
+      flex-direction: column; /* Sắp xếp nội dung theo chiều dọc */
+      align-items: center; /* Căn giữa theo chiều ngang */
+      justify-content: center; /* Căn giữa theo chiều dọc */
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.5); /* Nền tối để chữ dễ đọc hơn */
+      padding: 20px; /* Giá trị padding hợp lệ thay cho 'cover' */
+      height: 500px;
+      width: 100%;
+    }
+    
+    .subtitle {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+    
+    h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+    }
+    
+    .button {
+      display: inline-block;
+      background-color: #ff9900; /* Màu nền nút */
+      color: white;
+      padding: 15px 30px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    
+    .section {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    
+    .section h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #2c3e50;
+    }
+    
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    
+    .product {
+      border: 1px solid #ddd;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .product img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 15px;
+    }
+    
+    .product h3 {
+      margin-bottom: 10px;
+      color: #34495e;
+    }
+    
+    .about {
+      display: flex;
+      padding: 50px;
+      background-color: #f9f9f9; /* Màu nền cho phần about */
+    }
+    
+    .about-content {
+      flex: 1;
+      padding-right: 30px;
+    }
+    
+    .about-content h2 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+    
+    .divider {
+      border: 1px solid #ddd;
+      margin-bottom: 20px;
+    }
+    
+    .about-content p {
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+    
+    .address {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+    
+    .about-image {
+      flex: 1;
+      text-align: center;
+    }
+    
+    .about-image img {
+      max-width: 100%;
+      height: auto;
+    }
+    
+    footer {
+      background-color: #34495e;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+    }
+    
+    footer p {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="https://broskafe.com/wp-content/uploads/2019/12/Bros-kafe-website-logo.png" alt="Bro's Kafe Logo"> 
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#">TRANG CHỦ</a></li>
+        <li><a href="#">QUICK MENU</a></li>
+        <li><a href="https://facebook.com/broskafedanang">FACEBOOK PAGE</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <p class="subtitle">Kitchen for Expats</p>
+      <h1 style="font-size: 75px">Bro's Kafe Da Nang</h1>
+      <a href="#" class="button">Click here for Delivery & Pickup</a>
+    </div>
+  </section>
+
+  <section class="about">
+    <div class="about-content">
+      <h2>We are Bro's Kafe</h2>
+      <hr class="divider">
+      <p>
+        - Bro's Kafe was founded in June 2018 by 2 Bros sharing the same passion of opening a rendezvous spot for expats in Da Nang City.<br>
+        - Bro's Kafe serves Specialty Coffee 100% from coffee beans with honey-red processed.<br>
+        - Bro's Kafe is also well-known for good sandwiches, baguette, croissant and salad that have good value for quality and casual price.<br>
+        - Bro's Kafe is the first coffeeshop in Da Nang that serve Green Smoothie from spinach and fresh fruits<br>
+        - Bro's Kafe cooperate with Bellany Ice Cream to provide high quality ice-cream with many amazing flavour such as sorbet, salted caramel<br>
+        - Bro's Kafe is proving that high value can be made from the simple. That's why Bro's Kafe is ranked one of the Top coffeeshop for expats in Da Nang
+      </p>
+      <p class="address">39 NGO THI SI St.</p>
+    </div>
+    <div class="about-image">
+      <img src="https://broskafe.com/wp-content/uploads/Artboard-4-600x600.png" alt="Bro's Kafe Image">
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>BEST SALES</h2>
+    <div class="product-grid">
+      <div class="product">
+        <img src="https://broskafe.com/wp-content/uploads/IMG_20200909_155304_862-scaled.jpg" alt="Chicken X" width="200">
+        <h3>Chicken X</h3>
+        <p>Chicken Breast - Smashed potatoes - Broccoli</p>
+      </div>
+      <div class="product">
+        <img src="https://scontent.fhan14-2.fna.fbcdn.net/v/t39.30808-6/481229822_1263013168665753_7020792224250883532_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_ohc=hT65VLhJt1gQ7kNvgHSlahY&_nc_oc=AdkG0bOYISZRhnFJkC_zkqiZJ3lWqyGzWco-vk_rgZOZMeoXfFubIAHkj_xubd0vdi_nF2OPvyMT1_xNFTiTllUL&_nc_zt=23&_nc_ht=scontent.fhan14-2.fna&_nc_gid=0_bCxELhcFS6ywBSjxvNrw&oh=00_AYEzMEfGCmpKBQNoEJ3Kta1n7opctcTRG7ra3ZvIOuIEiQ&oe=67F1C897" alt="Chicken Baguette" width="200">
+        <h3>Chicken Baguette</h3>
+        <p>Chicken - Mushroom - White onion - Cheese</p>
+      </div>
+      <div class="product">
+        <img src="https://scontent.fhan14-3.fna.fbcdn.net/v/t39.30808-6/481334240_1262991042001299_5837461055481575741_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=833d8c&_nc_ohc=esXqqmpFtf8Q7kNvgGQC-ca&_nc_oc=Adm4XUe2eUxOJs_ecdKqSGPRqBm-YsGbxgDJ80ytPoeFE3TH7JHbaw1IOUPCmBNx-NgXBEEsLNVyDhEODsYnclOB&_nc_zt=23&_nc_ht=scontent.fhan14-3.fna&_nc_gid=l2Dn_OLshWcZJv6VkNmCgg&oh=00_AYHITtdZueGvvFG_mhRC95LN6ZnKnacJTmp1LeoZAdY40Q&oe=67F1BE9F" alt="Caeser Salad" width="200">
+        <h3>Caeser Salad</h3>
+        <p></p>
+      </div>
+      <div class="product">
+        <img src="https://scontent.fhan14-3.fna.fbcdn.net/v/t39.30808-6/485020114_1282447220055681_4218571397508039876_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=833d8c&_nc_ohc=44tgvM-1ds8Q7kNvgGkFjvO&_nc_oc=AdkcSnxd5kfFeyoHwigEhSzqSfk_exssyUak5J9BRVl9c0RRlg0b1CozLCe_KLW8MhOthuh-K8qD7e_CuCoDLB5Q&_nc_zt=23&_nc_ht=scontent.fhan14-3.fna&_nc_gid=rWSbP-a85nxFpX93arSRgQ&oh=00_AYFQquTr4KDMCL-PI9dRbdOd79C80BI5KvfWH2oh4MwTOw&oe=67F1E06D" alt="Egg Benedict on Sandwich" width="200">
+        <h3>Egg Benedict on Sandwich</h3>
+        <p>Bacon - Egg - Avocado - Hollandaise</p>
+      </div>
+    </div>
+  </section>
+<section class="delivery-section">
+  <div class="delivery-content">
+    <h2>Food Delivery in Da Nang</h2>
+    <p class="delivery-tagline">GET SERVED LIKE A KING</p>
+    <p>Looking for food delivery nearby? Not everybody knows or has the time to prepare tasty food.</p>
+    <p>Food delivery from Bros Kafe ensures you get your meal quickly, with quality and care.</p>
+    <p>Simply select "Delivery" at the checkout screen and enjoy our service!</p>
+  </div>
+  <div class="delivery-image">
+    <img src="https://broskafe.com/wp-content/uploads/2019/12/delivery-in-danang-600x450.jpg" alt="Delivery Image">
+  </div>
+</section>
+<section class="image-gallery">
+  <div class="gallery-wrapper">
+    <h2>Various kinds of Coffee - Smoothie - Sandwich - Salad</h2>
+    <p class="subtitle">LOVE AT FIRST TASTE</p>
+    <div class="image-container">
+      <img src="https://broskafe.com/wp-content/uploads/2019/12/Coconut-Coffee-1.jpg" alt="Coconut Coffee">
+      <img src="https://broskafe.com/wp-content/uploads/2019/12/Coconut-Coffee.jpg" alt="Coconut Coffee">
+      <img src="https://broskafe.com/wp-content/uploads/2019/12/Grilled-Omelette.jpg" alt="Grilled Omelette">
+      <img src="https://broskafe.com/wp-content/uploads/2019/12/Elvis-Baguette.jpg" alt="Elvis Baguette">
+      <img src="https://broskafe.com/wp-content/uploads/2019/12/BLAT-Sandwich.jpg" alt="BLAT Sandwich">
+      <img src="https://broskafe.com/wp-content/uploads/2019/12/Smashed-Avocado.jpg" alt="Smashed Avocado">
+      <img src="https://broskafe.com/wp-content/uploads/2019/12/Banh-mi-xa-xiu.jpg" alt="Banh Mi Xa Xiu">
+      <img src="https://broskafe.com/wp-content/uploads/2019/12/Bacon-Egg-Croissant.jpg" alt="Bacon Egg Croissant">
+      <img src="https://broskafe.com/wp-content/uploads/2019/12/Bacon-Baguette.jpg" alt="Bacon Baguette">
+      <img src="https://broskafe.com/wp-content/uploads/2019/12/Bat-xiu.jpg" alt="Bat Xiu">
+      <img src="https://broskafe.com/wp-content/uploads/IMG_20200909_155304_862-scaled.jpg" alt="Chicken X">
+      <img src="https://broskafe.com/wp-content/uploads/2020/03/best-sandwich-in-danang.jpg" alt="Best Sandwich">
+    </div>
+  </div>
+</section>
+
+<section class="youtube-video">
+  <h2>Watch Our Video</h2>
+  <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/12_1kycxzjk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+</section>
+<section class="review-section">
+  <div class="review-container">
+    <!-- Phần đầu hiển thị tên quán + logo Google -->
+    <div class="review-header">
+      <div class="review-info">
+        <h2 class="cafe-name">Bro's Kafe</h2>
+        <p class="powered-by">powered by <span>Google</span></p>
+      </div>
+      <!-- Logo Google -->
+      <img
+        src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-1024.png"
+        alt="Google Logo"
+        class="google-logo"
+      />
+    </div>
+
+    <!-- Danh sách review -->
+    <div class="review-list">
+      <!-- Một review -->
+      <div class="review-item">
+        <div class="review-top">
+          <span class="review-author">Osama Rehan</span>
+          <span class="review-rating">★★★★★</span>
+        </div>
+        <p class="review-text">"It's a hidden gem, very nice"</p>
+      </div>
+
+      <div class="review-item">
+        <div class="review-top">
+          <span class="review-author">Tạ Thanh Tân</span>
+          <span class="review-rating">★★★★★</span>
+        </div>
+        <p class="review-text">
+          "The foods are good, best coffee in town. Their services, staff, the atmosphere just..."
+        </p>
+      </div>
+
+      <div class="review-item">
+        <div class="review-top">
+          <span class="review-author">Fern Xtwo</span>
+          <span class="review-rating">★★★★★</span>
+        </div>
+        <p class="review-text">
+          "Pretty good, been here a few times now and I rarely can finish the food. Had the Chicken X today and the mashed potatoes... "
+        </p>
+      </div>
+
+      <!-- Các review bổ sung (ẩn ban đầu) -->
+      <div class="additional-reviews">
+        <div class="review-item">
+          <div class="review-top">
+            <span class="review-author">KIWI CHRIS</span>
+            <span class="review-rating">★★★★★</span>
+          </div>
+          <p class="review-text">"Great staff and food! Affordable meals"</p>
+        </div>
+
+        <div class="review-item">
+          <div class="review-top">
+            <span class="review-author">David Kuehl</span>
+            <span class="review-rating">★★★★☆</span>
+          </div>
+          <p class="review-text">"Nice western options at decent prices. My dish was underseasoned though."</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nút "More Reviews" -->
+    <button class="more-reviews-btn" onclick="toggleReviews()">More Reviews</button>
+
+    <!-- Nút "Write a Review" -->
+    <div class="write-review-btn">
+      <a
+        href="https://www.google.com/search?hl=vi-VN&gl=vn&q=Bro%27s+Kafe,+39+%C4%90.+Ng.+Th%C3%AC+S%C4%A9,+B%E1%BA%AFc+M%E1%BB%B9+An,+Ng%C5%A9+H%C3%A0nh+S%C6%A1n,+%C4%90%C3%A0+N%E1%BA%B5ng+50000&ludocid=2293153314847265449&lsig=AB86z5VETvJiO-kiWKd5tdbzxmq7#lrd=0x314217d53e1ea769:0x1fd2eaca4afb12a9,3"
+        target="_blank"
+        class="write-review-link"
+      >
+        Write a Review
+      </a>
+    </div>
+  </div>
+</section>
+
+
+ <!-- Thêm JavaScript ở đây -->
+  <script>
+    function toggleReviews() {
+  const additionalReviews = document.querySelector('.additional-reviews');
+  const button = document.querySelector('.more-reviews-btn');
+  
+  if (additionalReviews.style.display === 'none' || additionalReviews.style.display === '') {
+    additionalReviews.style.display = 'block'; // Hiển thị thêm review
+    button.textContent = 'Less Reviews'; // Đổi văn bản nút thành "Less Reviews"
+  } else {
+    additionalReviews.style.display = 'none'; // Ẩn review bổ sung
+    button.textContent = 'More Reviews'; // Đổi văn bản nút thành "More Reviews"
+  }
+}
+
+  </script>
+
+<section class="footer-section">
+  <div class="footer-content">
+    <!-- Lịch tháng -->
+    <div class="calendar">
+      <h3>March 2025</h3>
+      <div class="calendar-container">
+        <!-- Lịch -->
+        <table>
+          <thead>
+            <tr>
+              <th>Su</th>
+              <th>Mo</th>
+              <th>Tu</th>
+              <th>We</th>
+              <th>Th</th>
+              <th>Fr</th>
+              <th>Sa</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td><td></td><td></td><td>1</td><td>2</td><td>3</td><td>4</td>
+            </tr>
+            <tr>
+              <td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td>
+            </tr>
+            <tr>
+              <td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td>
+            </tr>
+            <tr>
+              <td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td>
+            </tr>
+            <tr>
+              <td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td><td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Phần liên hệ -->
+    <div class="contact-us">
+      <h3>Contact Us</h3>
+      <p>39 Ngo Thi Si Street<br>My An Ward, Ngu Hanh Son District<br>Da Nang, Vietnam<br>Phone: +84 905-05-79-03</p>
+      <a href="https://www.tripadvisor.com/Restaurant_Review-g298085-d14450622-Reviews-Bro_s_Kafe_Da_N_ng-Da_Nang.html" target="_blank">
+        <img src="https://static.tacdn.com/img2/brand_refresh/Tripadvisor_lockup_horizontal_secondary_registered.svg" alt="Tripadvisor Logo">
+      </a>
+    </div>
+
+    <!-- Bro's Kafe -->
+    <div class="bro-kafe">
+      <h3>Bro's Kafe</h3>
+      <p>Kitchen for Expats</p>
+      <p>Address: 39 Ngo Thi Si Street, Da Nang, Vietnam</p>
+      <p>We're open: Mo-Su 07:00 - 21:30</p>
+      <p>Tel: +84 905-05-79-03</p>
+    </div>
+  </div>
+</section>
+
+
+  <footer>
+    <p>&copy; 2024 Broskafe - Bản sao</p>
+  </footer>
+</body>
+</html>
